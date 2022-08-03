@@ -1,5 +1,7 @@
 # tcppc
 
+一个可以全端口捕获流量的简易蜜罐
+
 [tcppc-go](https://github.com/md-irohas/tcppc-go) 的修改版
 
 增加了自动识别tls/http协议的功能
