@@ -18,8 +18,7 @@ Vary: Accept-Encoding
 ETag: W/"6203b88e-264"
 X-Content-Type-Options: nosniff`
 
-const data2 = `
-<!DOCTYPE html>
+const data2 = `<!DOCTYPE html>
 <html>
 <head>
 <title>Welcome to nginx!</title>
