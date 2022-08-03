@@ -1,0 +1,14 @@
+# SYSTEMD unit file.
+
+[Unit]
+Description=TCP payload capture
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/tcppc -c /etc/tcppc.toml
+ExecStop=/bin/kill ${MAINPID}
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
