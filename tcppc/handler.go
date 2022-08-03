@@ -121,9 +121,9 @@ func handler(conn net.Conn, writer *RotWriter, timeout int, config *tls.Config) 
 	}
 	conn2 := NewConn{
 		conn,
-		io.MultiReader(bytes.NewReader(firstByte), conn),
+		io.MultiReader(bytes.NewReader(firstByte), conn), //由于之前已经读取了一部分数据 需要覆盖 reader 还原buffer
 	}
-	if bytes.Equal(firstByte[0:2], []uint8{22, 3}) {
+	if bytes.Equal(firstByte[0:2], []uint8{22, 3}) { //TLS 首包特征  TODO 其他协议模拟
 		conn3 := tls.Server(conn2, config)
 		go HandleTLSSession(conn3, writer, timeout)
 	} else {

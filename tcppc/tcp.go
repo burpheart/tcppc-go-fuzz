@@ -47,7 +47,7 @@ func HandleTCPSession(conn net.Conn, writer *RotWriter, timeout int) {
 			if string(buf1[0:5]) == "POST " || string(buf1[0:4]) == "GET " || string(buf1[0:5]) == "HEAD " || string(buf1[0:8]) == "OPTIONS " || string(buf1[0:7]) == "DELETE " || string(buf1[0:4]) == "PUT " || string(buf1[0:6]) == "TRACE " || string(buf1[0:8]) == "CONNECT " {
 				conn.Write([]byte(data1))
 				a := session.String()
-				conn.Write([]byte("\n" + a))
+				conn.Write([]byte("\n" + a)) //发送连接信息 用于跟踪网络空间搜索引擎 包含当前连接状态信息(源ip端口 目的ip端口 时间) 反向搜集网络空间搜索引擎 扫描机ip&特征
 				conn.Write([]byte("\ncontent-length: " + strconv.Itoa(len(data2))))
 				conn.Write([]byte("\n\n"))
 				conn.Write([]byte(data2))
